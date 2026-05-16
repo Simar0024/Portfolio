@@ -3,9 +3,7 @@
    Clean, Minimal Interactivity
    ============================================= */
 
-// ==========================================
-// THEME MANAGEMENT
-// ==========================================
+// Theme Management Workflow
 class ThemeManager {
     constructor() {
         this.toggle = document.getElementById('theme-toggle');
@@ -22,7 +20,6 @@ class ThemeManager {
                 const newTheme = current === 'dark' ? 'light' : 'dark';
                 this.setTheme(newTheme);
             });
-            // Handle Keyboard Event Accessibilities
             this.toggle.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -44,19 +41,13 @@ class ThemeManager {
         if (this.toggle) {
             const icon = this.toggle.querySelector('i');
             if (icon) {
-                if (theme === 'dark') {
-                    icon.className = 'fas fa-sun';
-                } else {
-                    icon.className = 'fas fa-moon';
-                }
+                icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
             }
         }
     }
 }
 
-// ==========================================
-// MOBILE NAVIGATION
-// ==========================================
+// Mobile Responsive Drawer Menu Navigation
 class MobileNav {
     constructor() {
         this.hamburger = document.getElementById('hamburger');
@@ -100,9 +91,7 @@ class MobileNav {
     }
 }
 
-// ==========================================
-// SMOOTH SCROLL WITH OFFSET TRACKING
-// ==========================================
+// Smooth Page Anchoring Offsets
 class SmoothScroll {
     constructor() {
         this.links = document.querySelectorAll('a[href^="#"]');
@@ -135,9 +124,7 @@ class SmoothScroll {
     }
 }
 
-// ==========================================
-// NAVIGATION ACTIVE STATE TRACKER
-// ==========================================
+// Active Link Highlight on Scroll Tracker
 class NavActiveState {
     constructor() {
         this.links = document.querySelectorAll('.nav-link');
@@ -171,9 +158,7 @@ class NavActiveState {
     }
 }
 
-// ==========================================
-// SKILL PROGRESS BARS INTERSECTION
-// ==========================================
+// Progress Bar Loader Engine
 class SkillProgress {
     constructor() {
         this.bars = document.querySelectorAll('.skill-progress');
@@ -195,7 +180,7 @@ class SkillProgress {
                     observer.unobserve(bar);
                 }
             });
-        }, { threshold: 0.2 });
+        }, { threshold: 0.15 });
 
         this.bars.forEach(bar => {
             bar.style.width = '0%';
@@ -211,9 +196,7 @@ class SkillProgress {
     }
 }
 
-// ==========================================
-// CONTACT FORM HANDLER
-// ==========================================
+// Contact Submission Callback Layer
 class FormHandler {
     constructor() {
         this.form = document.querySelector('.contact-form');
@@ -236,7 +219,6 @@ class FormHandler {
         button.innerHTML = '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
         button.disabled = true;
 
-        // Mocking API delay handling
         setTimeout(() => {
             button.innerHTML = '<span>✓ Message Sent!</span>';
             this.form.reset();
@@ -249,9 +231,7 @@ class FormHandler {
     }
 }
 
-// ============================================
-// INITIALIZE PORTFOLIO APPLICATION
-// ============================================
+// Global Orchestrator Init
 document.addEventListener('DOMContentLoaded', () => {
     new ThemeManager();
     new MobileNav();
